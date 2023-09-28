@@ -23,14 +23,18 @@ const Navbar = () => {
     <header className="bg-[#fff] mt-[20px]">
       <ul className="flex justify-center  py-[20px]">
         <li>
-          <Link className="text-[16px] px-4" onClick={handleClickBox} to={"/"}>
+          <Link
+            className="hover:text-[#9b63a3] text-[16px] px-4"
+            onClick={handleClickBox}
+            to={"/"}
+          >
             Box shadow
           </Link>
         </li>
         <li>
           <Link
             to={"/text-shadow"}
-            className="text-[16px] px-4"
+            className="hover:text-[#9b63a3] text-[16px] px-4"
             onClick={handleClickText}
           >
             Text shadow
@@ -39,7 +43,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/border"}
-            className="text-[16px] px-4"
+            className="hover:text-[#9b63a3] text-[16px] px-4"
             onClick={handleClickBorder}
           >
             Border
@@ -48,7 +52,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/transform"}
-            className="text-[16px] px-4"
+            className="hover:text-[#9b63a3] text-[16px] px-4"
             onClick={handleClickTransform}
           >
             Transform
@@ -57,7 +61,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/gradient"}
-            className="text-[16px] px-4"
+            className="hover:text-[#9b63a3] text-[16px] px-4"
             onClick={handleClickGradient}
           >
             Gradient

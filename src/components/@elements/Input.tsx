@@ -13,7 +13,7 @@ const InputRange = React.forwardRef<HTMLInputElement, IProps>(
     return (
       <div className={className}>
         {labelText && <label className="font-normal">{labelText}</label>}
-        <div className="">
+        <div className="relative">
           <div className="flex">{children}</div>
           <input
             id="txt"

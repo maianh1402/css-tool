@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App.js';
 import reportWebVitals from './reportWebVitals';
-import { Router } from 'react-router-dom';
+import 'tippy.js/dist/tippy.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -8,12 +8,14 @@ import { IText } from "../../interface.tsx";
 import Navbar from "../Navbar/index.tsx";
 import Preview from "./Preview.tsx";
 import CssCode from "./CssCode.tsx";
+import Tippy from "@tippyjs/react";
+import { followCursor } from "tippy.js";
 
 const TextShadow: React.FC = () => {
   const [shiftRight, setShiftRight] = useState(0);
   const [shiftDown, setShiftDown] = useState(0);
-  const [blur, setBlur] = useState(0);
-  const [opacity, setOpacity] = useState(0);
+  const [blur, setBlur] = useState(5);
+  const [opacity, setOpacity] = useState(20);
 
   const [choice, setChoice] = useState(false);
   const [layers, setLayers] = useState<IText[]>([]);
@@ -75,44 +77,72 @@ const TextShadow: React.FC = () => {
             </h2>
             <>
               <div className="card_item">
-                <InputRange
-                  value={shiftRight}
-                  min={-100}
-                  max={100}
-                  onChange={(e) => setShiftRight(Number(e.target.value))}
+                <Tippy
+                  content={`${shiftRight || 0}`}
+                  followCursor={true}
+                  plugins={[followCursor]}
+                  hideOnClick={false}
                 >
-                  Shift right
-                </InputRange>
+                  <InputRange
+                    value={shiftRight}
+                    min={-100}
+                    max={100}
+                    onChange={(e) => setShiftRight(Number(e.target.value))}
+                  >
+                    Shift right
+                  </InputRange>
+                </Tippy>
               </div>
               <div className="card_item">
-                <InputRange
-                  value={shiftDown}
-                  min={-100}
-                  max={100}
-                  onChange={(e) => setShiftDown(Number(e.target.value))}
+                <Tippy
+                  content={`${shiftDown || 0}`}
+                  followCursor={true}
+                  plugins={[followCursor]}
+                  hideOnClick={false}
                 >
-                  Shift down
-                </InputRange>
+                  <InputRange
+                    value={shiftDown}
+                    min={-100}
+                    max={100}
+                    onChange={(e) => setShiftDown(Number(e.target.value))}
+                  >
+                    Shift down
+                  </InputRange>
+                </Tippy>
               </div>
               <div className="card_item">
-                <InputRange
-                  value={blur}
-                  min={0}
-                  max={100}
-                  onChange={(e) => setBlur(Number(e.target.value))}
+                <Tippy
+                  content={`${blur || 5}`}
+                  followCursor={true}
+                  plugins={[followCursor]}
+                  hideOnClick={false}
                 >
-                  Blur
-                </InputRange>
+                  <InputRange
+                    value={blur}
+                    min={0}
+                    max={100}
+                    onChange={(e) => setBlur(Number(e.target.value))}
+                  >
+                    Blur
+                  </InputRange>
+                </Tippy>
               </div>
               <div className="card_item">
-                <InputRange
-                  value={opacity}
-                  min={0}
-                  max={100}
-                  onChange={(e) => setOpacity(Number(e.target.value))}
+                <Tippy
+                  content={`${opacity || 20}`}
+                  followCursor={true}
+                  plugins={[followCursor]}
+                  hideOnClick={false}
                 >
-                  Opacity
-                </InputRange>
+                  <InputRange
+                    value={opacity}
+                    min={0}
+                    max={100}
+                    onChange={(e) => setOpacity(Number(e.target.value))}
+                  >
+                    Opacity
+                  </InputRange>
+                </Tippy>
               </div>
               <div className="card_item">
                 <input type="checkbox" className="cursor-pointer" />
