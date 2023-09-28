@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import BoxShadow from "./components/BoxBoxShadow.tsx";
+import BoxShadow from "./components/Box/BoxBoxShadow.tsx";
 
 function App() {
   return (
