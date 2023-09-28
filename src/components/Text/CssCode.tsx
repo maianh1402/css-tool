@@ -1,11 +1,11 @@
 import React from "react";
 
 interface CssProps {
-  boxShadow: string;
+  textShadowValue: string;
 }
 
 const CssCode = (props: CssProps) => {
-  const { boxShadow } = props;
+  const { textShadowValue } = props;
   return (
     <div className="card py-[15px] mt-[20px]">
       <div className="pl-[20px]">
@@ -13,7 +13,7 @@ const CssCode = (props: CssProps) => {
           CSS code
         </h2>
         <div className="my-[20px] text-[15px]">
-          {`box-shadow: ${boxShadow};`}
+          {`text-shadow: ${textShadowValue};`}
         </div>
       </div>
     </div>

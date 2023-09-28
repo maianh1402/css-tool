@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import BoxShadow from "./components/Box/BoxBoxShadow.tsx";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
 
 function App() {
   return (
-    <div>
-      <BoxShadow />
+    <div className="App">
+      <RouterProvider router={router} />
     </div>
   );
 }

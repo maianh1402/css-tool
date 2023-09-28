@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 interface PreviewProps {
-  boxShadow: string;
+  textShadowValue: string;
 }
+
 const Preview = (props: PreviewProps) => {
-  const { boxShadow } = props;
+  const { textShadowValue } = props;
   const [bgColor, setBgColor] = useState("#ffffff");
   const [bgColorChildren, setBgColorChildren] = useState("#7468fb");
-
   return (
     <>
       <div className="card w-[100%] pt-[15px]">
@@ -30,11 +30,16 @@ const Preview = (props: PreviewProps) => {
             />
           </div>
         </div>
-        <div className="m-[10px]" style={{ background: bgColor }}>
-          <textarea
-            className="min-w-[100px] max-w-[400px] min-h-[100px] max-h-[400px] m-[50px] resize"
-            style={{ background: bgColorChildren, boxShadow: boxShadow }}
-          ></textarea>
+        <div className={`mx-[10px] py-[100px]`} style={{ background: bgColor }}>
+          <span
+            className="text-[60px] font-medium px-[30px]"
+            style={{
+              color: bgColorChildren,
+              textShadow: textShadowValue,
+            }}
+          >
+            Phương Anh
+          </span>
         </div>
       </div>
     </>

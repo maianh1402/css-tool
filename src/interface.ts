@@ -1,9 +1,17 @@
 export interface Layer {
   id: number;
-  shiftRight: number;
+  right: number;
   down: number;
   spread: number;
   blur: number;
   opacity: number;
-  color: string;
+  boxShadow: string;
+}
+export interface IText {
+  id: number;
+  right: number;
+  down: number;
+  blur: number;
+  opacity: number;
+  textShadow: string;
 }
