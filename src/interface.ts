@@ -1,5 +1,6 @@
 export interface Layer {
-  right: number;
+  id: number;
+  shiftRight: number;
   down: number;
   spread: number;
   blur: number;

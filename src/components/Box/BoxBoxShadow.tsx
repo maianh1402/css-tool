@@ -15,14 +15,16 @@ const BoxShadow = () => {
   const [blur, setBlur] = useState(0);
   const [opacity, setOpacity] = useState(0);
 
+  const [choice, setChoice] = useState(false);
   const [layers, setLayers] = useState<Layer[]>([]);
-  const [choiceColor, setChoiceColor] = useState(`rgba(0, 0, 0, `);
+  const [choiceColor, setChoiceColor] = useState(`rgba( 0, 0, 0 `);
 
   const handleAddLayer = () => {
     const newLayer = [
       ...layers,
       {
-        right: shiftRight,
+        id: Math.random(),
+        shiftRight: shiftRight,
         down: shiftDown,
         spread: spread,
         blur: blur,
@@ -32,11 +34,25 @@ const BoxShadow = () => {
     ];
     setLayers(newLayer);
   };
-  const hexToRgba = (hex) => {
+  const hexToRgba = (hex: string) => {
     const red = parseInt(hex.slice(1, 3), 16);
     const green = parseInt(hex.slice(3, 5), 16);
     const blue = parseInt(hex.slice(5, 7), 16);
     return `rgba(${red}, ${green}, ${blue}`;
+  };
+  const handleDeleteLayer = (id: number) => {
+    const updatedLayers = [...layers].filter((layer) => layer.id !== id);
+    setLayers(updatedLayers);
+  };
+  const handleChangeLayer = (index: number): void => {
+    setChoice(true);
+    const choiceLayer = layers[index];
+    setShiftRight(choiceLayer.shiftRight);
+    setShiftDown(choiceLayer.down);
+    setSpread(choiceLayer.spread);
+    setBlur(choiceLayer.blur);
+    setOpacity(choiceLayer.opacity);
+    setChoiceColor(choiceLayer.color);
   };
 
   return (
@@ -120,18 +136,24 @@ const BoxShadow = () => {
             </Button>
           </div>
           <ul>
-            <li className="card_item bg-[#f5f5f5] flex justify-between py-[15px] mx-[20px]">
+            <li
+              className={`${
+                choice === false
+                  ? "bg-[#7468fb] text-white"
+                  : "hover:bg-[#f5f5f5]"
+              } card_item flex justify-between py-[15px] mx-[20px]`}
+            >
               <div className="text-[18px] cursor-move">
                 <CgMenuGridO />
               </div>
               <div className="w-[80p%] text-[15px] cursor-move">
                 <span>
-                  {`${shiftRight}px ${shiftDown}px ${spread}px ${blur}px ${choiceColor} ${
+                  {`${shiftRight}px ${shiftDown}px ${spread}px ${blur}px ${choiceColor}, ${
                     opacity / 100
-                  })`}
+                  } )`}
                 </span>
               </div>
-              <div className="flex items-center text-[18px] cursor-pointer">
+              <div className="flex items-center text-[18px] cursor-move">
                 <GoPencil className="mr-[15px]" />
                 <AiOutlineDelete className="mr-[15px]" />
               </div>
@@ -139,19 +161,31 @@ const BoxShadow = () => {
             {layers.map((layer, index) => (
               <li
                 key={index}
-                className="card_item bg-[#f5f5f5] flex justify-between py-[15px] mx-[20px]"
+                className={`${
+                  choice === true
+                    ? "bg-[#7468fb] text-white"
+                    : "hover:bg-[#f5f5f5]"
+                } card_item flex justify-between py-[15px] mx-[20px]`}
               >
                 <div className="text-[18px] cursor-move">
                   <CgMenuGridO />
                 </div>
                 <div className="w-[80p%] text-[15px] cursor-move">
-                  <span>{`${layer.right}px ${layer.down}px ${layer.spread}px ${
-                    layer.blur
-                  }px ${layer.color}, ${layer.opacity / 100})`}</span>
+                  <span>{`${layer.shiftRight}px ${layer.down}px ${
+                    layer.spread
+                  }px ${layer.blur}px ${layer.color}, ${
+                    layer.opacity / 100
+                  })`}</span>
                 </div>
                 <div className="flex items-center text-[18px] cursor-pointer">
-                  <GoPencil className="mr-[15px]" />
-                  <AiOutlineDelete className="mr-[15px]" />
+                  <GoPencil
+                    className="mr-[15px]"
+                    onClick={() => handleChangeLayer(index)}
+                  />
+                  <AiOutlineDelete
+                    className="mr-[15px]"
+                    onClick={() => handleDeleteLayer(layer.id)}
+                  />
                 </div>
               </li>
             ))}
